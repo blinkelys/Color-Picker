@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Color Picker</title>
+        <style>
+            .container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            h1 {
+                font-size: 3rem;
+                margin-bottom: 20px;
+                border-bottom: #333 solid 2px;
+                padding-inline: 10px;
+            }
+            input[type="color"] {
+                width: 150px;
+                height: 150px;
+                border: none;
+                background: none;
+                cursor: pointer;
+            }
+            #hexCode {
+                font-size: 2em;
+                margin: 10px 10px;
+            }
+            button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 8px;
+                background-color: #333;
+                color: #fff;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #555;
+            }
+        </style>
+    </head>
+    <body>
+
+    <div class="container">
+        <h1>Color Picker</h1>
+        <div id="hexCode">#ffffff</div>
+        <button onclick="copyHex()">Copy HEX</button>
+        <input type="color" id="colorPicker">
+    </div>
+
+    <script>
+        const colorPicker = document.getElementById('colorPicker');
+        const hexCode = document.getElementById('hexCode');
+
+        colorPicker.addEventListener('input', function() {
+            hexCode.textContent = colorPicker.value;
+        });
+
+        function copyHex() {
+            navigator.clipboard.writeText(hexCode.textContent).then(() => {
+                alert('Hex code copied!');
+            });
+        }
+
+        hexCode.textContent = colorPicker.value;
+    </script>
+
+    </body>
+</html>
